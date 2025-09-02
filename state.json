@@ -49,15 +49,38 @@
   },
   "system": {
     "environment": "development",
-    "executionPlatform": "local",
-    "browserAvailable": false,
+    "executionPlatform": "termux",
+    "browserAvailable": true,
+    "browserType": "selenium",
+    "headlessSupported": false,
     "apiKeysConfigured": false,
+    "cloudPlatforms": {
+      "replit": {
+        "configured": true,
+        "playwrightSupported": true,
+        "headlessSupported": true,
+        "configFile": "replit.nix"
+      },
+      "github_actions": {
+        "configured": true,
+        "playwrightSupported": true,
+        "headlessSupported": true,
+        "workflowFile": ".github/workflows/atriuum-automation.yml"
+      },
+      "termux": {
+        "configured": true,
+        "playwrightSupported": false,
+        "headlessSupported": false,
+        "browserFallback": "selenium"
+      }
+    },
     "dependencies": {
       "python": {
         "virtualEnv": "venv",
         "status": "installed",
-        "packages": ["requests", "python-dotenv", "httpx", "selenium"],
-        "missing": ["playwright", "pydantic", "pandas", "numpy"]
+        "packages": ["requests", "python-dotenv", "httpx", "selenium", "webdriver-manager"],
+        "missing": ["playwright", "pydantic", "pandas", "numpy", "google-cloud-aiplatform", "google-auth"],
+        "cloudOnly": ["playwright", "google-cloud-aiplatform", "google-auth", "google-api-python-client"]
       },
       "nodejs": {
         "status": "installed",

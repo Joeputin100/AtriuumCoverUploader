@@ -1,14 +1,9 @@
-# Core Python Dependencies for AtriuumCoverUploader
-# Version: 1.0.0
+# Cloud-specific dependencies for AtriuumCoverUploader
+# Use this file for Replit and GitHub Actions environments
 
-# ===== BROWSER AUTOMATION =====
-# Note: Playwright not available on Termux - using Selenium as fallback
-# For cloud execution (Replit/GitHub Actions), use Playwright:
-# playwright==1.48.2  # Cloud-only dependency
-
-# Fallback browser automation (Termux compatible)
-selenium==4.34.2
-webdriver-manager==4.0.2
+# ===== BROWSER AUTOMATION (CLOUD-ONLY) =====
+# Playwright for cloud environments with proper browser support
+playwright==1.48.2
 
 # ===== CLOUD API DEPENDENCIES =====
 # Google Cloud Vertex AI for planning and optimization
@@ -22,7 +17,7 @@ google-auth-httplib2==0.2.0
 google-auth-oauthlib==1.2.0
 
 # ===== CORE UTILITIES =====
-# Web Framework for API endpoints (if needed)
+# Web Framework for API endpoints
 fastapi==0.115.6
 uvicorn[standard]==0.31.1
 
@@ -73,7 +68,10 @@ mypy==1.11.1
 types-python-dateutil==2.9.0.20240316
 types-pytz==2024.2.0.20240316
 
-# ===== PLATFORM-SPECIFIC NOTES =====
-# Termux: Use Selenium + existing dependencies
-# Cloud (Replit/GitHub Actions): Install Playwright additionally
-# Google Cloud: Requires service account credentials for Vertex AI
+# ===== CLOUD-SPECIFIC OPTIMIZATIONS =====
+# For better performance in cloud environments
+gunicorn==21.2.0
+uvloop==0.19.0
+
+# Note: Cloud environments should use Playwright instead of Selenium
+# for better reliability and headless browser support
