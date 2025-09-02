@@ -1,0 +1,92 @@
+{
+  "projectName": "AtriuumCoverUploader",
+  "description": "Automated agent to navigate Atriuum SPA, upload cover art for ~4000 bibliographic records, and save changes using cloud-based browser automation.",
+  "environment": {
+    "execution": "Cloud-based (Replit or GitHub Actions)",
+    "localTrigger": "Termux (via webhook or curl)",
+    "languages": ["Node.js", "Python"],
+    "deviceConstraints": {
+      "device": "Motorola Moto G Play 2024",
+      "noHeadlessBrowser": true,
+      "noProot": true,
+      "budget": "Zero-cost"
+    }
+  },
+  "modules": [
+    {
+      "name": "BookIDQueue",
+      "type": "Python",
+      "description": "Manages queue of book IDs and cover image paths",
+      "defensiveFeatures": ["Type hints", "Validation of ID format", "Retry logic"],
+      "inputs": ["book_id: str", "cover_path: str"],
+      "outputs": ["queue.json"]
+    },
+    {
+      "name": "CoverArtResolver",
+      "type": "Node.js",
+      "description": "Fetches cover art using Google Books API or local mapping",
+      "defensiveFeatures": ["API fallback", "Rate limit handling", "Type guards"],
+      "inputs": ["isbn: str", "title: str", "author: str"],
+      "outputs": ["cover_url: str"]
+    },
+    {
+      "name": "BrowserAgent",
+      "type": "Python (Playwright)",
+      "description": "Navigates Atriuum SPA, fills form, uploads cover, taps save",
+      "defensiveFeatures": ["Selector verification", "Timeouts", "Error logging"],
+      "inputs": ["book_id: str", "cover_url: str"],
+      "outputs": ["upload_status: str"]
+    },
+    {
+      "name": "VertexPlanner",
+      "type": "Python",
+      "description": "Uses Vertex Deep Research API to optimize navigation and batching",
+      "defensiveFeatures": ["Schema validation", "Fallback heuristics"],
+      "inputs": ["book_metadata: dict"],
+      "outputs": ["batch_plan: list"]
+    },
+    {
+      "name": "MLEStarOptimizer",
+      "type": "Python",
+      "description": "Optimizes upload sequence and resource usage",
+      "defensiveFeatures": ["Type enforcement", "Performance metrics"],
+      "inputs": ["upload_log: list"],
+      "outputs": ["optimized_sequence: list"]
+    },
+    {
+      "name": "WebhookTrigger",
+      "type": "Bash/Termux",
+      "description": "Triggers cloud agent from Termux using curl",
+      "defensiveFeatures": ["URL validation", "Response parsing"],
+      "inputs": ["book_id: str"],
+      "outputs": ["trigger_status: str"]
+    }
+  ],
+  "dataFlow": [
+    "BookIDQueue → CoverArtResolver → BrowserAgent",
+    "BrowserAgent → upload_log → MLEStarOptimizer",
+    "BookIDQueue → VertexPlanner → BrowserAgent"
+  ],
+  "testing": {
+    "unitTests": true,
+    "mockData": true,
+    "batchSimulation": true,
+    "visualDebugMode": "Every 100th record"
+  },
+  "logging": {
+    "format": "JSON",
+    "storage": "Local file or Replit DB",
+    "fields": ["book_id", "cover_url", "status", "timestamp"]
+  },
+  "fallbacks": {
+    "coverArt": "Use placeholder image if Google Books fails",
+    "formSelector": "Use XPath if CSS selector fails",
+    "uploadRetry": "Max 3 retries with exponential backoff"
+  },
+  "created": "2024-09-01T18:01:00Z",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/AtriuumCoverUploader.git"
+  }
+}

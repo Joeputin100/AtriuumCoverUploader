@@ -1,0 +1,74 @@
+{
+  "project": {
+    "name": "AtriuumCoverUploader",
+    "status": "initializing",
+    "phase": "setup",
+    "version": "1.0.0",
+    "lastInteraction": "2024-09-01T18:01:00Z"
+  },
+  "modules": {
+    "BookIDQueue": {
+      "status": "not_started",
+      "progress": 0,
+      "lastUpdated": "2024-09-01T18:01:00Z"
+    },
+    "CoverArtResolver": {
+      "status": "not_started",
+      "progress": 0,
+      "lastUpdated": "2024-09-01T18:01:00Z"
+    },
+    "BrowserAgent": {
+      "status": "not_started",
+      "progress": 0,
+      "lastUpdated": "2024-09-01T18:01:00Z"
+    },
+    "VertexPlanner": {
+      "status": "not_started",
+      "progress": 0,
+      "lastUpdated": "2024-09-01T18:01:00Z"
+    },
+    "MLEStarOptimizer": {
+      "status": "not_started",
+      "progress": 0,
+      "lastUpdated": "2024-09-01T18:01:00Z"
+    },
+    "WebhookTrigger": {
+      "status": "not_started",
+      "progress": 0,
+      "lastUpdated": "2024-09-01T18:01:00Z"
+    }
+  },
+  "data": {
+    "totalRecords": 0,
+    "processedRecords": 0,
+    "successfulUploads": 0,
+    "failedUploads": 0,
+    "lastProcessedBookId": null,
+    "currentBatch": 0,
+    "totalBatches": 0
+  },
+  "system": {
+    "environment": "development",
+    "executionPlatform": "local",
+    "browserAvailable": false,
+    "apiKeysConfigured": false,
+    "storage": {
+      "type": "local",
+      "path": "/data/data/com.termux/files/home/projects/cover"
+    }
+  },
+  "performance": {
+    "averageProcessingTime": 0,
+    "totalProcessingTime": 0,
+    "peakMemoryUsage": 0,
+    "requestsPerMinute": 0
+  },
+  "errors": {
+    "recentErrors": [],
+    "totalErrors": 0,
+    "lastError": null,
+    "errorRate": 0
+  },
+  "created": "2024-09-01T18:01:00Z",
+  "updated": "2024-09-01T18:01:00Z"
+}
