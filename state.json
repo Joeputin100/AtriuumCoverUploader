@@ -1,10 +1,10 @@
 {
   "project": {
     "name": "AtriuumCoverUploader",
-    "status": "initializing",
+    "status": "dependencies_installed",
     "phase": "setup",
     "version": "1.0.0",
-    "lastInteraction": "2024-09-01T18:01:00Z"
+    "lastInteraction": "2024-09-01T19:48:00Z"
   },
   "modules": {
     "BookIDQueue": {
@@ -52,6 +52,19 @@
     "executionPlatform": "local",
     "browserAvailable": false,
     "apiKeysConfigured": false,
+    "dependencies": {
+      "python": {
+        "virtualEnv": "venv",
+        "status": "installed",
+        "packages": ["requests", "python-dotenv", "httpx", "selenium"],
+        "missing": ["playwright", "pydantic", "pandas", "numpy"]
+      },
+      "nodejs": {
+        "status": "installed",
+        "packages": ["axios", "dotenv", "lodash", "moment", "fs-extra", "ajv", "bottleneck", "winston", "commander", "inquirer", "node-cache", "sharp"],
+        "devPackages": ["jest", "@types/jest", "eslint", "@typescript-eslint/eslint-plugin", "@typescript-eslint/parser", "nodemon", "ts-node", "tsc", "jest-mock"]
+      }
+    },
     "storage": {
       "type": "local",
       "path": "/data/data/com.termux/files/home/projects/cover"
@@ -70,5 +83,5 @@
     "errorRate": 0
   },
   "created": "2024-09-01T18:01:00Z",
-  "updated": "2024-09-01T18:01:00Z"
+  "updated": "2024-09-01T19:48:00Z"
 }
